@@ -1,10 +1,8 @@
 # CRUD App
 
-A product list manager. Add, view, edit and delete items, then sort, filter and page through them.
+A product list manager for a small store. Keep a list of products with their SKU, category, price and quantity, and find any item quickly with search, filters and sorting.
 
-This is project #1 in my learning path. Its features get reused later in my Inventory, POS, HRIS and ERP projects.
-
-**Status:** in progress (v1 setup)
+**Status:** in progress
 
 **Live demo:** coming soon on GitHub Pages
 
@@ -12,62 +10,24 @@ This is project #1 in my learning path. Its features get reused later in my Inve
 ![Screenshot of the CRUD App](screenshot.png)
 -->
 
-## Versions
-
-The same app is built twice, with the same features but a different place where the data lives.
-
-| Version | Stack | Data lives in | Status |
-| --- | --- | --- | --- |
-| v1 | HTML, JavaScript, Tailwind CSS, Vite | Browser `localStorage` | In progress |
-| v2 | PHP, MySQL (XAMPP) | MySQL table | Not started |
-
 ## Features
 
-Planned for v1. Each one gets ticked when it works.
+- **Add products** with a form that checks for missing fields, invalid prices and duplicate SKUs
+- **View products** in a table, with prices shown in pesos (₱)
+- **Edit products** in the same form
+- **Delete products** with a confirm step, so nothing is removed by accident
+- **Search** by name or number as you type
+- **Filter** by category
+- **Sort** by clicking a column header, ascending or descending
+- **Pagination** with 5, 10 or 20 rows per page
+- **Saved data** that stays after a page refresh
+- **Responsive layout** that works on mobile
 
-- [ ] **Create:** add-item form with validation (required fields, no duplicate SKU)
-- [ ] **Read:** table of items with price shown as ₱ with 2 decimals
-- [ ] **Update:** edit an item in the same form
-- [ ] **Delete:** delete with a confirm modal
-- [ ] **Search and filter:** search by name or number, filter by category
-- [ ] **Sorting:** click a column header to sort ascending or descending
-- [ ] **Pagination:** 5 / 10 / 20 rows per page with Prev / Next
-- [ ] **Saved data:** items survive a page refresh
+## Built with
 
-## How to run v1
+- HTML and JavaScript
+- Tailwind CSS
+- Vite
+- Browser `localStorage` for saving data
 
-You need [Node.js](https://nodejs.org) installed.
-
-```bash
-cd v1-vanilla
-npm install
-npm run dev
-```
-
-Then open the link shown in the terminal (usually `http://localhost:5173`).
-
-## Folder structure
-
-```
-crud-app/
-├─ v1-vanilla/          v1: Vanilla JS + localStorage + Tailwind
-│  ├─ index.html
-│  ├─ src/
-│  │  ├─ main.js        start-up, event listeners
-│  │  ├─ storage.js     load/save localStorage
-│  │  ├─ table.js       render rows, sort, paginate
-│  │  ├─ form.js        add/edit, validation
-│  │  └─ input.css      Tailwind import
-│  └─ package.json
-├─ v2-php-mysql/        v2: PHP + MySQL
-│  ├─ public/           index.html, js, built css
-│  ├─ api/              products.php: GET, POST, PUT, DELETE
-│  ├─ config/db.php     database connection (not committed)
-│  └─ database.sql
-├─ CRUD App — Plan & Feature Checklist.md
-└─ README.md
-```
-
-## Plan
-
-The full plan, build order and wireframe are in [CRUD App — Plan & Feature Checklist.md](CRUD%20App%20—%20Plan%20&%20Feature%20Checklist.md).
+A second version with PHP and MySQL is planned.
