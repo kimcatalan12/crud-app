@@ -1,0 +1,10 @@
+# packages installed by npm (re-created with "npm install")
+node_modules/
+
+# Vite build output
+dist/
+
+# database password file for v2, never upload this
+v2-php-mysql/config/db.php
+
+CRUD App — Plan & Feature Checklist.md
