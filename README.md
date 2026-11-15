@@ -27,6 +27,7 @@ A product list manager for a small store. Keep a list of products with their SKU
 
 - HTML and JavaScript
 - Tailwind CSS
+- daisyUI
 - Vite
 - Browser `localStorage` for saving data
 
