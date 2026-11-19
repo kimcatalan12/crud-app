@@ -1,0 +1,42 @@
+export const products = [
+  {
+    id: "1",
+    sku: "KB-001",
+    name: "Mechanical Keyboard",
+    category: "Electronics",
+    price: 2500,
+    qty: 12,
+  },
+  {
+    id: "2",
+    sku: "MS-002",
+    name: "Wireless Mouse",
+    category: "Electronics",
+    price: 850,
+    qty: 30,
+  },
+  {
+    id: "3",
+    sku: "NB-003",
+    name: "Spiral Notebook",
+    category: "Stationery",
+    price: 75,
+    qty: 100,
+  },
+  {
+    id: "4",
+    sku: "CH-004",
+    name: "Office Chair",
+    category: "Furniture",
+    price: 4200,
+    qty: 0,
+  },
+  {
+    id: "5",
+    sku: "CT-005",
+    name: "Computer Table",
+    category: "Furniture",
+    price: 670,
+    qty: 1,
+  },
+];

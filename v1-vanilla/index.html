@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A product list manager for a small store.">
+    <link rel="stylesheet" href="src/input.css">
+    <title>Product Manager</title>
+</head>
+
+<body class="min-h-screen bg-base-200">
+    <main class="mx-auto max-w-5xl p-4 sm:p-8">
+        <section class="card bg-base-100 shadow-sm">
+
+            <!-- Header: title + Add Item button -->
+            <header class="flex items-center justify-between gap-4 border-b border-base-300 p-4">
+                <h1 class="flex items-center gap-2 text-xl font-bold">
+                    <i data-lucide="package" class="size-6 text-primary"></i>
+                    Product Manager
+                </h1>
+                <button class="btn btn-primary js-add-button">
+                    <i data-lucide="plus" class="size-4"></i>
+                    Add Item
+                </button>
+            </header>
+
+            <!-- Toolbar: search, category filter, reset -->
+            <div class="flex flex-col gap-3 border-b border-base-300 p-4 sm:flex-row">
+                <label class="input w-full sm:flex-1">
+                    <i data-lucide="search" class="size-4 opacity-50"></i>
+                    <input type="search" class="js-search-input" placeholder="Search name or number...">
+                </label>
+                <select class="select w-full sm:w-48 js-category-filter" aria-label="Filter by category">
+                    <option value="">All categories</option>
+                    <option>Drinks</option>
+                    <option>Noodles</option>
+                    <option>Soap</option>
+                </select>
+                <button class="btn btn-ghost js-reset-button">
+                    <i data-lucide="rotate-ccw" class="size-4"></i>
+                    Reset
+                </button>
+            </div>
+
+            <!-- Table (scrolls sideways on mobile) -->
+            <div class="overflow-x-auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <button class="flex cursor-pointer items-center gap-1 js-sort-button"
+                                    data-sort-by="name">
+                                    Name
+                                    <i data-lucide="arrow-up" class="size-3.5"></i>
+                                </button>
+                            </th>
+                            <th>
+                                <button class="flex cursor-pointer items-center gap-1 js-sort-button"
+                                    data-sort-by="sku">
+                                    Number
+                                </button>
+                            </th>
+                            <th>Category</th>
+                            <th>
+                                <button class="flex cursor-pointer items-center gap-1 js-sort-button"
+                                    data-sort-by="price">
+                                    Price
+                                </button>
+                            </th>
+                            <th>
+                                <button class="flex cursor-pointer items-center gap-1 js-sort-button"
+                                    data-sort-by="qty">
+                                    Qty
+                                </button>
+                            </th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Sample rows for now. Later table.js renders these from the products array. -->
+                    <tbody class="js-products-table">
+                        <tr class="hover:bg-base-200">
+                            <td class="font-medium">Coke 1L</td>
+                            <td>SKU-001</td>
+                            <td><span class="badge badge-soft badge-primary">Drinks</span></td>
+                            <td>₱65.00</td>
+                            <td>24</td>
+                            <td>
+                                <div class="flex justify-end gap-1">
+                                    <button class="btn btn-ghost btn-sm btn-square js-edit-button" data-product-id="1"
+                                        aria-label="Edit Coke 1L">
+                                        <i data-lucide="pencil" class="size-4"></i>
+                                    </button>
+                                    <button class="btn btn-ghost btn-sm btn-square text-error js-delete-button"
+                                        data-product-id="1" aria-label="Delete Coke 1L">
+                                        <i data-lucide="trash-2" class="size-4"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-base-200">
+                            <td class="font-medium">Lucky Me</td>
+                            <td>SKU-002</td>
+                            <td><span class="badge badge-soft badge-primary">Noodles</span></td>
+                            <td>₱15.00</td>
+                            <td>80</td>
+                            <td>
+                                <div class="flex justify-end gap-1">
+                                    <button class="btn btn-ghost btn-sm btn-square js-edit-button" data-product-id="2"
+                                        aria-label="Edit Lucky Me">
+                                        <i data-lucide="pencil" class="size-4"></i>
+                                    </button>
+                                    <button class="btn btn-ghost btn-sm btn-square text-error js-delete-button"
+                                        data-product-id="2" aria-label="Delete Lucky Me">
+                                        <i data-lucide="trash-2" class="size-4"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-base-200">
+                            <td class="font-medium">Safeguard</td>
+                            <td>SKU-003</td>
+                            <td><span class="badge badge-soft badge-primary">Soap</span></td>
+                            <td>₱42.50</td>
+                            <td>12</td>
+                            <td>
+                                <div class="flex justify-end gap-1">
+                                    <button class="btn btn-ghost btn-sm btn-square js-edit-button" data-product-id="3"
+                                        aria-label="Edit Safeguard">
+                                        <i data-lucide="pencil" class="size-4"></i>
+                                    </button>
+                                    <button class="btn btn-ghost btn-sm btn-square text-error js-delete-button"
+                                        data-product-id="3" aria-label="Delete Safeguard">
+                                        <i data-lucide="trash-2" class="size-4"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Empty state: remove "hidden" when there are no products -->
+                <div class="hidden flex-col items-center gap-2 p-12 text-center js-empty-state">
+                    <i data-lucide="package-open" class="size-10 opacity-40"></i>
+                    <p class="opacity-60">No products yet. Click Add Item.</p>
+                </div>
+            </div>
+
+            <!-- Footer: rows per page, showing text, pagination -->
+            <footer
+                class="flex flex-col items-center justify-between gap-3 border-t border-base-300 p-4 text-sm sm:flex-row">
+                <label class="flex items-center gap-2">
+                    Rows:
+                    <select class="select select-sm w-20 js-rows-select">
+                        <option>5</option>
+                        <option selected>10</option>
+                        <option>20</option>
+                    </select>
+                </label>
+
+                <p class="opacity-70 js-showing-text">Showing 1–3 of 3</p>
+
+                <div class="join js-pagination">
+                    <button class="btn btn-sm join-item" disabled>
+                        <i data-lucide="chevron-left" class="size-4"></i>
+                        Prev
+                    </button>
+                    <button class="btn btn-sm join-item btn-active">1</button>
+                    <button class="btn btn-sm join-item">2</button>
+                    <button class="btn btn-sm join-item">3</button>
+                    <button class="btn btn-sm join-item">
+                        Next
+                        <i data-lucide="chevron-right" class="size-4"></i>
+                    </button>
+                </div>
+            </footer>
+
+        </section>
+    </main>
+
+    <!-- Add / Edit modal (same form for both) -->
+    <dialog class="modal js-product-modal">
+        <div class="modal-box max-w-md">
+            <!-- method="dialog" = the buttons close the modal without reloading the page -->
+            <form method="dialog" class="js-product-form">
+                <div class="mb-2 flex items-center justify-between">
+                    <h2 class="text-lg font-bold js-product-modal-title">Add Item</h2>
+                    <button class="btn btn-ghost btn-sm btn-circle" formnovalidate aria-label="Close">
+                        <i data-lucide="x" class="size-4"></i>
+                    </button>
+                </div>
+
+                <fieldset class="fieldset">
+                    <label class="label" for="name">Name</label>
+                    <input id="name" name="name" type="text" class="input w-full js-name-input" placeholder="Coke 1L"
+                        required>
+
+                    <label class="label" for="sku">SKU</label>
+                    <input id="sku" name="sku" type="text" class="input w-full js-sku-input" placeholder="SKU-001"
+                        required>
+
+                    <label class="label" for="category">Category</label>
+                    <select id="category" name="category" class="select w-full js-category-input" required>
+                        <option value="" disabled selected>Pick a category</option>
+                        <option>Drinks</option>
+                        <option>Noodles</option>
+                        <option>Soap</option>
+                    </select>
+
+                    <label class="label" for="price">Price</label>
+                    <label class="input w-full">
+                        <span class="opacity-50">₱</span>
+                        <input id="price" name="price" type="number" class="js-price-input" min="0" step="0.01"
+                            placeholder="0.00" required>
+                    </label>
+
+                    <label class="label" for="qty">Quantity</label>
+                    <input id="qty" name="qty" type="number" class="input w-full js-qty-input" min="0" step="1"
+                        placeholder="0" required>
+                </fieldset>
+
+                <div class="modal-action">
+                    <button class="btn" formnovalidate>Cancel</button>
+                    <button class="btn btn-primary js-save-button">Save</button>
+                </div>
+            </form>
+        </div>
+        <!-- click outside the box to close -->
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <!-- Delete modal -->
+    <dialog class="modal js-delete-modal">
+        <div class="modal-box max-w-sm">
+            <h2 class="text-lg font-bold">Delete "<span class="js-delete-name">Coke 1L</span>"?</h2>
+            <p class="py-2 opacity-70">This cannot be undone.</p>
+            <form method="dialog" class="modal-action">
+                <button class="btn">Cancel</button>
+                <button class="btn btn-error js-confirm-delete-button">Delete</button>
+            </form>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
+    <script type="module" src="src/main.js"></script>
+    <script type="module" src="src/table.js"></script>
+</body>
+
+</html>
