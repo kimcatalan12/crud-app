@@ -22,6 +22,17 @@ document.querySelectorAll(".js-delete-button").forEach((button) => {
 // generate HTML
 
 export function displayTable(param) {
+
+  const emptyState = document.querySelector(".js-empty-state");
+
+  if (param.length === 0) {
+    emptyState.classList.remove("hidden");
+    emptyState.classList.add("flex");
+  } else {
+    emptyState.classList.add("hidden");
+    emptyState.classList.remove("flex");
+  }
+  
   let generateHtml = ``;
 
   param.forEach((value) => {
