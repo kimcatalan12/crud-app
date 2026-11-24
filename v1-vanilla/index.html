@@ -78,71 +78,10 @@
                         </tr>
                     </thead>
 
-                    <!-- Sample rows for now. Later table.js renders these from the products array. -->
                     <tbody class="js-products-table">
-
-                        <tr class="hover:bg-base-200">
-                            <td class="font-medium">Coke 1L</td>
-                            <td>SKU-001</td>
-                            <td><span class="badge badge-soft badge-primary">Drinks</span></td>
-                            <td>₱65.00</td>
-                            <td>24</td>
-                            <td>
-                                <div class="flex justify-end gap-1">
-                                    <button class="btn btn-ghost btn-sm btn-square js-edit-button" data-product-id="1"
-                                        aria-label="Edit Coke 1L">
-                                        <i data-lucide="pencil" class="size-4"></i>
-                                    </button>
-                                    <button class="btn btn-ghost btn-sm btn-square text-error js-delete-button"
-                                        data-product-id="1" aria-label="Delete Coke 1L">
-                                        <i data-lucide="trash-2" class="size-4"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="hover:bg-base-200">
-                            <td class="font-medium">Lucky Me</td>
-                            <td>SKU-002</td>
-                            <td><span class="badge badge-soft badge-primary">Noodles</span></td>
-                            <td>₱15.00</td>
-                            <td>80</td>
-                            <td>
-                                <div class="flex justify-end gap-1">
-                                    <button class="btn btn-ghost btn-sm btn-square js-edit-button" data-product-id="2"
-                                        aria-label="Edit Lucky Me">
-                                        <i data-lucide="pencil" class="size-4"></i>
-                                    </button>
-                                    <button class="btn btn-ghost btn-sm btn-square text-error js-delete-button"
-                                        data-product-id="2" aria-label="Delete Lucky Me">
-                                        <i data-lucide="trash-2" class="size-4"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-base-200">
-                            <td class="font-medium">Safeguard</td>
-                            <td>SKU-003</td>
-                            <td><span class="badge badge-soft badge-primary">Soap</span></td>
-                            <td>₱42.50</td>
-                            <td>12</td>
-                            <td>
-                                <div class="flex justify-end gap-1">
-                                    <button class="btn btn-ghost btn-sm btn-square js-edit-button" data-product-id="3"
-                                        aria-label="Edit Safeguard">
-                                        <i data-lucide="pencil" class="size-4"></i>
-                                    </button>
-                                    <button class="btn btn-ghost btn-sm btn-square text-error js-delete-button"
-                                        data-product-id="3" aria-label="Delete Safeguard">
-                                        <i data-lucide="trash-2" class="size-4"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
 
-                <!-- Empty state: remove "hidden" when there are no products -->
                 <div class="hidden flex-col items-center gap-2 p-12 text-center js-empty-state">
                     <i data-lucide="package-open" class="size-10 opacity-40"></i>
                     <p class="opacity-60">No products yet. Click Add Item.</p>
@@ -250,7 +189,6 @@
     </dialog>
 
     <script type="module" src="src/main.js"></script>
-    <script type="module" src="src/table.js"></script>
 </body>
 
 </html>

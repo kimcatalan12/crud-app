@@ -1,38 +1,8 @@
 import { products } from "./storage";
-import { displayTable } from "./table";
+import { renderProductsTable } from "./table";
+import { renderIcons } from "./icons";
 
-import {
-  createIcons,
-  Plus,
-  Pencil,
-  Trash2,
-  Search,
-  X,
-  Package,
-  PackageOpen,
-  RotateCcw,
-  ArrowUp,
-  ArrowDown,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide";
-
-createIcons({
-  icons: {
-    Plus,
-    Pencil,
-    Trash2,
-    Search,
-    X,
-    Package,
-    PackageOpen,
-    RotateCcw,
-    ArrowUp,
-    ArrowDown,
-    ChevronLeft,
-    ChevronRight,
-  },
-});
+renderIcons();
 
 class Product {
   id;
@@ -50,8 +20,12 @@ class Product {
     this.price = price;
     this.qty = qty;
   }
+
+  formatCurrency(param) {
+    return (Math.round(param) / 100).toFixed(2);
+  }
 }
 
-const newProduct = products.map((param) => new Product(param));
+const productList = products.map((productDetails) => new Product(productDetails));
 
-displayTable(newProduct);
+renderProductsTable(productList);
