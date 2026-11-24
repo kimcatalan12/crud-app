@@ -21,9 +21,8 @@ document.querySelectorAll(".js-delete-button").forEach((button) => {
   });
 });
 
-// generate HTML
-
-export function renderProductsTable(products) {
+// show the "No products yet" message only when the list is empty
+function renderEmptyState(products) {
   const emptyState = document.querySelector(".js-empty-state");
 
   if (products.length === 0) {
@@ -33,6 +32,12 @@ export function renderProductsTable(products) {
     emptyState.classList.add("hidden");
     emptyState.classList.remove("flex");
   }
+}
+
+// generate HTML
+
+export function renderProductsTable(products) {
+  renderEmptyState(products);
 
   let productsHTML = "";
 
