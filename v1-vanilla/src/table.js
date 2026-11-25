@@ -42,12 +42,12 @@ export function renderProductsTable(products) {
   let productsHTML = "";
 
   products.forEach((product) => {
-    const { name, sku, category, price, qty } = product;
+    const { name, sku, category, qty } = product;
     productsHTML += `<tr class="hover:bg-base-200">
                             <td class="font-medium">${name}</td>
                             <td>${sku}</td>
                             <td><span class="badge badge-soft badge-primary">${category}</span></td>
-                            <td>${product.formatCurrency(price)}</td>
+                            <td>${product.formatPrice()}</td>
                             <td>${qty}</td>
                             <td>
                                 <div class="flex justify-end gap-1">

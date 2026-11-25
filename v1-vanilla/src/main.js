@@ -17,12 +17,12 @@ class Product {
     this.sku = sku;
     this.name = name;
     this.category = category;
-    this.price = price;
+    this.price = Number(price);
     this.qty = qty;
   }
 
-  formatCurrency(param) {
-    return (Math.round(param) / 100).toFixed(2);
+  formatPrice() {
+    return this.price.toLocaleString("en-PH", { style: "currency", currency: "PHP" });
   }
 }
 
